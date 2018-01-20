@@ -4,16 +4,33 @@
     
     <h1>WELCOME</h1>
 
-    <h2>{{game.render}}</h2>
+    <h2>{{user.render}}</h2>
+    <h2>You have {{user.times_left}} times guesses left!</h2>
     <br>
+
+    <h2>Your guesses: {{user.cur_guesses}}</h2>
 
     <p class="lead">-------------------------</p>
 
-    <form method="post" id="letter-form" class="form-inline vspace">
-        <div class="form-group">
+    {% if not user.finished %}
+        <form method="post" id="letter-form" class="form-inline vspace">
+            <div class="form-group">
+                <input name="letter" class="form-control mr-sm-2" type="text" placeholder="Try Letter" aria-label="Search">
+            </div>
+        </form>
+    {% else %}
+        {% if user.win %}
+            <h2>You Win!<h2>
+        {% else %}
+            <h2>You've Lost!<h2>
+            <h2>The word is {{user.cur_word}}<h2>
 
-            <input name="letter" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        </div>
-    </form>
+        {% endif %}
+        <form action="{{url_for('play',user_id=user.id)}}" class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Play Again</button>
+        </form>
+    {% endif %}
+
+
 
 {% endblock %}
