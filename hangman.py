@@ -54,7 +54,7 @@ class User(db.Model):
 
     @property
     def render(self):
-        rendered = ''.join([char if char in self.cur_guesses else ' _ ' for char in self.cur_word])
+        rendered = ''.join([char if char in self.cur_guesses else '*' for char in self.cur_word])
         if rendered == self.cur_word:
             self.win = True
             self.finished = True
@@ -64,9 +64,8 @@ class User(db.Model):
 
 
     def random_word(self):
-        hi = [line for line in open("wordlist.txt")]
-        print len(hi)
-        return random.choice(hi).upper()
+        words = [line.strip() for line in open("wordlist.txt")]
+        return random.choice(words).upper()
 
 
 
