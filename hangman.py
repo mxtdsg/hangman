@@ -36,7 +36,6 @@ class User(db.Model):
         self.win = False
         self.times_left = 10
 
-
     def try_letter(self, letter):
         if len(letter) != 1:
             return
@@ -55,6 +54,7 @@ class User(db.Model):
     @property
     def render(self):
         rendered = ''.join([char if char in self.cur_guesses else '*' for char in self.cur_word])
+        print rendered
         if rendered == self.cur_word:
             self.win = True
             self.finished = True
@@ -70,7 +70,6 @@ class User(db.Model):
 
 
 
-
 @app.route('/')
 def index():
     users = User.query.all()
@@ -79,6 +78,7 @@ def index():
 
 @app.route('/play')
 def new_game():
+    print "hererereerer"
     username = request.args.get('username')
     # check if user exist
     user = User.query.filter_by(username=username).first()
@@ -96,6 +96,7 @@ def play(user_id):
     user = User.query.get(user_id)
     if user.finished:
         user.new_game()
+        db.session.commit()
     if request.method == 'POST':
         letter = request.form['letter'].upper()
         user.try_letter(letter)
