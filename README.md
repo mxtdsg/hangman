@@ -1,23 +1,22 @@
 # Hangman
-====================
 
 Hangman game implemented using python-flask
 
 On this page:
 
-* [Setup](#markdown-header-setup)
-* [Logistics](#markdown-header-logistics)
-* [Problems/Bugs](#markdown-header-problems/bugs)	
-* [Extension Ideas](#markdown-header-extension-ideas)
-* [Links/References](#markdown-header-links/references)
+* [Setup](#setup)
+* [Logistics](#logistics)
+* [Problems/Bugs](#problems/bugs)	
+* [Extension Ideas](#extension-ideas)
+* [Links/References](#links/references)
 
 - - -
 
 ## Setup
-1. Need: python(2.7), flask, flask-SQLAlchemy
-  To install flask on Ubuntu: '$ sudo pip install flask'
-  To install SQLAlchemy on Ubuntu: '$ sudo pip install flask-sqlalchemy'
-2. Run: python hangman.py
+1. Need: Python(2.7), flask, flask-SQLAlchemy
+  To install flask on Ubuntu: `$ sudo pip install flask`
+  To install SQLAlchemy on Ubuntu: `$ sudo pip install flask-sqlalchemy`
+2. Run: `$ python hangman.py`
 3. Visit http://localhost:5000 on browser
 
 ## Logistics
@@ -31,7 +30,7 @@ Game supports keyboards input. User can only guess one alphabetical letter at a 
 When the game is won, a green Modal would pop, and a red one when lost. The actual word would be shown when finished. User would be given the chance to play again.
 
 ## Problems/Bugs
-1. WordList includes words with special characters. (eg. '-', '()')
+1. WordList includes words with special characters. (eg. "-", "()")
 
 ## Extension Ideas
 1. User can guess the whole word.
