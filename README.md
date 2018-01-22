@@ -14,8 +14,10 @@ On this page:
 
 ## Setup
 1. Need: Python(2.7), flask, flask-SQLAlchemy
+
   To install flask on Ubuntu: `$ sudo pip install flask`
   To install SQLAlchemy on Ubuntu: `$ sudo pip install flask-sqlalchemy`
+  
 2. Run: `$ python hangman.py`
 3. Visit http://localhost:5000 on browser
 
