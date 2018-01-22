@@ -1,35 +1,71 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-    
-    <h1>WELCOME</h1>
+    <!-- Modal -->
+    {% include 'includes/_modal.html' %}
+    <script type="text/javascript">
+        function switchModalColor() {
+            $('#modal-header-tbc').toggleClass('myRedModal');
+            $('#modal-footer-tbc').toggleClass('myRedModal');
+            $('#modal-text-tbc').text('You Lost!')
+        }
+    </script>
 
-    <h2>{{user.render}}</h2>
-    <h2>You have {{user.times_left}} times guesses left!</h2>
-    <br>
 
-    <h2>Your guesses: {{user.cur_guesses}}</h2>
+    <div class="container text-center">
+        <!-- <h1>Hangman</h1> -->
+        <img src="/static/images/hangman.png" width="399" height="102">
+        <div>
+            <img src="/static/images/{{user.times_left}}.PNG" width="250" height="250">
+        </div>
+        <br>
+        <h1 style="letter-spacing: 12px;">{{user.render}}</h2>
+        <h2>You have <font color="red">{{user.times_left}}</font> guesses left!</h2>
+        <h2>You've Guessed: 
+            {% for char in user.cur_guesses %}
+                {% if char in user.cur_word %}
+                    <font color="green">{{char}}</font>
+                {% else %}
+                    <font color="red">{{char}}</font>
+                {% endif %}
+            {% endfor %}
+        </h2>
 
-    <p class="lead">-------------------------</p>
+        <hr width="700">
+        {% if not user.finished %}
+            <form method="post" id="letter-form" class="form-inline vspace my-2 my-lg-0 mx-auto">
+                <div class="form-group mx-auto input-group" style="width: 215px;">
+                    <input name="letter" class="form-control mr-sm-2" type="text" placeholder="Try Letter" maxlength="1">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Try</button>
+                </div>
+            </form>
 
-    {% if not user.finished %}
-        <form method="post" id="letter-form" class="form-inline vspace">
-            <div class="form-group">
-                <input name="letter" class="form-control mr-sm-2" type="text" placeholder="Try Letter" aria-label="Search">
-            </div>
-        </form>
-    {% else %}
-        {% if user.win %}
-            <h2>You Win!<h2>
         {% else %}
-            <h2>You've Lost!<h2>
-            <h2>The word is {{user.cur_word}}<h2>
+            {% if user.win %}
+                <!-- green modal -->
+                <body onload="popModal();"></body>
+                <h2>You Won!</h2>
 
+            {% else %}
+                <!-- red modal -->
+                <script type="text/javascript">
+                window.onload =  function(){
+                    switchModalColor();
+                    popModal();
+                    switchModalColor();
+                };
+                </script>
+                <h3>You Lost!</h3>
+                <h3>The word is: <font size="100%" font-style="italic" face="New Century Schoolbook, TeX Gyre Schola, serif">{{user.cur_word}}</font></h3>
+            {% endif %}
+
+            <form action="{{url_for('play',user_id=user.id)}}" class="form-inline my-2 my-lg-0">
+                <div class="form-group mx-auto">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Play Again</button>
+                </div>
+            </form>
         {% endif %}
-        <form action="{{url_for('play',user_id=user.id)}}" class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Play Again</button>
-        </form>
-    {% endif %}
+    </div>
 
 
 

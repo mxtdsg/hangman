@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
 import random
 
@@ -7,9 +7,12 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hangman.db'
 
+app.static_url_path=app.config.get('STATIC_FOLDER')
+app.static_folder=app.root_path + app.static_url_path
+
 db = SQLAlchemy(app)
 
-
+app.secret_key = 'bluhbluh'
 
 class User(db.Model):
     # user info
@@ -37,7 +40,7 @@ class User(db.Model):
         self.times_left = 10
 
     def try_letter(self, letter):
-        if len(letter) != 1:
+        if len(letter) != 1 or not letter.isalpha():
             return
         elif letter in self.cur_guesses:
             return
@@ -53,8 +56,8 @@ class User(db.Model):
 
     @property
     def render(self):
-        rendered = ''.join([char if char in self.cur_guesses else '*' for char in self.cur_word])
-        print rendered
+        # print self.cur_word
+        rendered = ''.join([char if char in self.cur_guesses else '_' for char in self.cur_word])
         if rendered == self.cur_word:
             self.win = True
             self.finished = True
@@ -62,12 +65,9 @@ class User(db.Model):
             db.session.commit()
         return rendered
 
-
     def random_word(self):
         words = [line.strip() for line in open("wordlist.txt")]
         return random.choice(words).upper()
-
-
 
 
 @app.route('/')
@@ -75,10 +75,8 @@ def index():
     users = User.query.all()
     return render_template('index.html', users=users)
 
-
 @app.route('/play')
 def new_game():
-    print "hererereerer"
     username = request.args.get('username')
     # check if user exist
     user = User.query.filter_by(username=username).first()
@@ -90,7 +88,6 @@ def new_game():
     db.session.commit()
     return redirect(url_for('play', user_id=user.id))
 
-
 @app.route('/play/<user_id>', methods=['GET', 'POST'])
 def play(user_id):
     user = User.query.get(user_id)
@@ -101,7 +98,6 @@ def play(user_id):
         letter = request.form['letter'].upper()
         user.try_letter(letter)
     return render_template('play.html', user=user)
-
 
 
 
