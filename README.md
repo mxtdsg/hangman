@@ -27,7 +27,7 @@ Includes the game and a scoreboard.
 
 Used one table 'User' to record users' id, username, number of wins/loses, and the most recent game info, which includes: current guessing word, guesses, number of guesses left, whether the game has finished/won.
 
-User only needs username to login in, and can resume an abandoned game.
+User only needs username to log in, and can resume an abandoned game.
 
 Game supports keyboards input. User can only guess one alphabetical letter at a time.
 When the game is won, a green Modal would pop, and a red one when lost. The actual word would be shown when finished. User would be given the chance to play again.
