@@ -6,9 +6,9 @@ On this page:
 
 * [Setup](#setup)
 * [Logistics](#logistics)
-* [Problems/Bugs](#problems/bugs)	
+* [Problems/Bugs](#problemsbugs)	
 * [Extension Ideas](#extension-ideas)
-* [Links/References](#links/references)
+* [Links/References](#linksreferences)
 
 - - -
 
