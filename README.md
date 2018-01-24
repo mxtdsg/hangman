@@ -34,6 +34,7 @@ When the game is won, a green Modal would pop, and a red one when lost. The actu
 
 ## Problems/Bugs
 1. WordList includes words with special characters. (eg. "-", "()")
+2. No auto-focus on the input box
 
 ## Extension Ideas
 1. User can guess the whole word.
