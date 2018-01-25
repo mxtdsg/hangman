@@ -33,12 +33,19 @@ Game supports keyboards input. User can only guess one alphabetical letter at a 
 When the game is won, a green Modal would pop, and a red one when lost. The actual word would be shown when finished. User would be given the chance to play again.
 
 ## Problems/Bugs
-- [] WordList includes words with special characters. (eg. "-", "()")
-- [x] No auto-focus on the input box
-- [] Back to homepage lose username
-- [] Go to http://localhost:5000/play in the middle of a game, get a new game
-- [] white spaces
-- [] Test
+Todos:
+1. WordList includes words with special characters. (eg. "-", "()")
+2. white spaces
+3. Test
+
+
+Solved:
+1. No auto-focus on the input box
+2. Back to homepage lose username
+3. Go to http://localhost:5000/play in the middle of a game would get a new user/game
+Sol: Added route to ask to login first, otherwise redirect back to homepage
+4. Go to http://localhost:5000/play when not loged in would get a new user/game
+5. Go to http://localhost:5000/play/<id> go directly to other people's game
 
 ## Extension Ideas
 1. User can guess the whole word.
