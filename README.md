@@ -21,6 +21,7 @@ On this page:
   
 2. Run: `$ python hangman.py`
 3. Visit http://localhost:5000 on browser
+4. Internet access is needed for the bootstrap templates
 
 ## Logistics
 Includes the game and a scoreboard.
@@ -34,18 +35,18 @@ When the game is won, a green Modal would pop, and a red one when lost. The actu
 
 ## Problems/Bugs
 Todos:
-1. WordList includes words with special characters. (eg. "-", "()")
-2. white spaces
-3. Test
-
+1. Test
 
 Solved:
 1. No auto-focus on the input box
 2. Back to homepage lose username
 3. Go to http://localhost:5000/play in the middle of a game would get a new user/game
 Sol: Added route to ask to login first, otherwise redirect back to homepage
-4. Go to http://localhost:5000/play when not loged in would get a new user/game
+4. Go to http://localhost:5000/play when not logged in would get a new user/game
 5. Go to http://localhost:5000/play/<id> go directly to other people's game
+6. Trailling white spaces/ Format and style
+7. WordList includes words with special characters. (eg. "-", "()")
+Sol: Random till we find a alphabetical word
 
 ## Extension Ideas
 1. User can guess the whole word.
@@ -53,8 +54,9 @@ Sol: Added route to ask to login first, otherwise redirect back to homepage
 3. Multiplayer mode.
 4. Categories for words.
 5. Add Play Agian button to Modal.
-6. Prompt message on: special characters, already guessed letters.
+6. Prompt message on: special characters, already guessed letters, when not logged in, when trying to access other ppl's games
 7. Access control: Need passwords to login.
+8. Show username on welcome page/top-right coner when in session 
 
 ## Links/References
 1. WordList: http://www-personal.umich.edu/~jlawler/wordlist.html
