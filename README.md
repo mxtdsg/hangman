@@ -34,6 +34,11 @@ When the game is won, a green Modal would pop, and a red one when lost. The actu
 
 ## Problems/Bugs
 1. WordList includes words with special characters. (eg. "-", "()")
+2. No auto-focus on the input box
+3. Back to homepage lose username
+4. Go to http://localhost:5000/play in the middle of a game, get a new game
+5. white spaces
+6. Test
 
 ## Extension Ideas
 1. User can guess the whole word.
