@@ -33,12 +33,12 @@ Game supports keyboards input. User can only guess one alphabetical letter at a 
 When the game is won, a green Modal would pop, and a red one when lost. The actual word would be shown when finished. User would be given the chance to play again.
 
 ## Problems/Bugs
-1. WordList includes words with special characters. (eg. "-", "()")
-2. No auto-focus on the input box
-3. Back to homepage lose username
-4. Go to http://localhost:5000/play in the middle of a game, get a new game
-5. white spaces
-6. Test
+- [] WordList includes words with special characters. (eg. "-", "()")
+- [x] No auto-focus on the input box
+- [] Back to homepage lose username
+- [] Go to http://localhost:5000/play in the middle of a game, get a new game
+- [] white spaces
+- [] Test
 
 ## Extension Ideas
 1. User can guess the whole word.
