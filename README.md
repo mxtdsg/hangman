@@ -50,23 +50,23 @@ Sol: Random till we find a alphabetical word
 ## Tests
 To run all test cases: at root directory `$ python tests/test_game.py`
 
-1. test_login: Test login/logout
-    includes:
-        test setup
-        test status after setup: not logged in
-        test able to log in successfully
-        test able to log out successfully
-        test able to go to game when logged in
-        test go back home in the middle of the game: still logged in
-        test go to /play, /play/id when not logged in: would direct back home
-        test go to /play/other_players_id: would direct back home
-2. test_game: Test game and scoreboard
-    includes:
-        test guess new letter in the word
-        test guess new letter not in the word
-        test guess already guessed letter / non alphabetical letter
-        test scoreboard track wins
-        test scoreboard track loses
+1. test_login: Test login/logout.
+    Includes:
+        test setup;
+        test status after setup: not logged in;
+        test able to log in successfully;
+        test able to log out successfully;
+        test able to go to game when logged in;
+        test go back home in the middle of the game: still logged in;
+        test go to /play, /play/id when not logged in: would direct back home;
+        test go to /play/other_players_id: would direct back home.
+2. test_game: Test game and scoreboard.
+    Includes:
+        test guess new letter in the word;
+        test guess new letter not in the word;
+        test guess already guessed letter / non alphabetical letter;
+        test scoreboard track wins;
+        test scoreboard track loses.
 
 ## Extension Ideas
 1. User can guess the whole word.
