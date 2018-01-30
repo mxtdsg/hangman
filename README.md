@@ -6,7 +6,8 @@ On this page:
 
 * [Setup](#setup)
 * [Logistics](#logistics)
-* [Problems/Bugs](#problemsbugs)	
+* [Problems/Bugs](#problemsbugs)
+* [Tests](#tests)
 * [Extension Ideas](#extension-ideas)
 * [Links/References](#linksreferences)
 
@@ -34,9 +35,6 @@ Game supports keyboards input. User can only guess one alphabetical letter at a 
 When the game is won, a green Modal would pop, and a red one when lost. The actual word would be shown when finished. User would be given the chance to play again.
 
 ## Problems/Bugs
-Todos:
-1. Test
-
 Solved:
 1. No auto-focus on the input box
 2. Back to homepage lose username
@@ -47,6 +45,28 @@ Sol: Added route to ask to login first, otherwise redirect back to homepage
 6. Trailling white spaces/ Format and style
 7. WordList includes words with special characters. (eg. "-", "()")
 Sol: Random till we find a alphabetical word
+8. Test
+    
+## Tests
+To run all test cases: at root directory `$ python tests/test_game.py`
+
+1. test_login: Test login/logout
+    includes:
+        test setup
+        test status after setup: not logged in
+        test able to log in successfully
+        test able to log out successfully
+        test able to go to game when logged in
+        test go back home in the middle of the game: still logged in
+        test go to /play, /play/id when not logged in: would direct back home
+        test go to /play/other_players_id: would direct back home
+2. test_game: Test game and scoreboard
+    includes:
+        test guess new letter in the word
+        test guess new letter not in the word
+        test guess already guessed letter / non alphabetical letter
+        test scoreboard track wins
+        test scoreboard track loses
 
 ## Extension Ideas
 1. User can guess the whole word.
